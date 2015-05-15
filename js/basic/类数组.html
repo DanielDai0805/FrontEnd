@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		var globalArguments = "";
+		// arguments对象
+		function args(){globalArguments = arguments; return arguments;}
+
+		var arrayLike = args('a','b');
+		arrayLike[0]  //'a'
+		arrayLike.length //2
+		arrayLike instanceof Array //false
+
+		// DOM元素集
+		var elts = document.getElementsByTagName('h3');
+		elts.length // 3
+		elts instanceof Array // false
+
+		// 字符串
+		'abc'[1] // 'b'
+		'abc'.length // 3
+		'abc' instanceof Array // false
+
+		//通过函数的call方法，可以用slice方法将类似数组的对象，变成真正的数组
+		var result = Array.prototype.slice.call(globalArguments);
+		console.debug(result);
+	</script>
+</head>
+<body>
+<div id="div"></div>
+<!--
+	ArrayLike:
+	1  arguments
+	2  DOM
+	3  String 
+-->
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+	var arr = [1,2,3];
+	arr.foo = "foo"
+		//method1	in 适用于对象以及数组
+		//method2	for...in 可以遍历非数字的键
+		for(var i in arr){
+			//console.debug(i);
+		}
+		//method3	for...in 利用length,不会显示非数字键
+		for(var i=0;i<arr.length;i++){
+			console.debug(arr[i]);
+		}
+
+	
+	</script>
+</head>
+<body>
+
+-->
+</body>
+</html>
