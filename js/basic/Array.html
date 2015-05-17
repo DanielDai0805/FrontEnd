@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		//slice方法重要的应用,将类似数组的对象转化为真正的数组
+		var arrayLike = {0:'a',1:'b',length:2}
+		var arrayLike2Array = Array.prototype.slice.call(arrayLike);
+		console.debug(arrayLike2Array);
+	</script>
+</head>
+<body>
+<!--
+	
+-->
+</body>
+</html>

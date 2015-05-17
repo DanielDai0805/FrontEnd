@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		//参考链接：http://javascript.ruanyifeng.com/oop/basic.html
+		//函数的call方法，可以改变指定函数内部this的指向，然后再调用该函数
+		var o = {};
+		var f = function(){return this;};
+		console.log(f()===this);//window
+		console.log(f.call(o)===o);//
+
+		/**call useage
+			func.call(thisValue,arg1,arg2,...);
+			thisValue:this所要指向的对象
+			arg1:函数调用时所需要的参数
+			arg2:函数调用时所需要的参数
+		*/
+
+		/**Apply
+			func.apply(thisValue,[arg1,arg2,...])
+			thisValue:this所要指向的对象
+			[arg1,arg2,...]:以数组形式把参数传递到函数中
+		*/
+
+		
+
+		/**
+			func.bind(thisValue,arg1,arg2,...);
+			this的绑定和call一样
+			bind比call方法和apply方法更进一步的是，除了绑定this以外，还可以绑定原函数的参数。
+
+		*/
+
+
+		//ps:如果thisVlaue为null or undefined,则this对象等同于传入window
+	</script>
+</head>
+<body>
+
+</body>
+</html>

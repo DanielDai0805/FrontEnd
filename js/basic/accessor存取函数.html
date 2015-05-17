@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		var o = {
+			get p(){
+				return "getter";
+			},
+			set p(value){
+				console.log("setter:"+value);
+			}
+		}
+		console.log(o.p);
+		o.p = 123;
+		console.log(o.p);
+	</script>
+</head>
+<body>
+<!--
+	
+-->
+</body>
+</html>
