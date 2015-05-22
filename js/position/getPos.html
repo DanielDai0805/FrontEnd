@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		
+	</style>
+	<script>
+		window.onload = function(){
+				
+		}
+
+		function getPos(ele){
+			var position = {left:0,top:0};
+			while(obj){
+				position.left += obj.offsetLeft;
+				position.top += obj.offsetTop;
+				obj = obj.offsetParent;
+			}
+			return position;
+		}
+	</script>
+</head>
+<body>
+	
+	
+</body>
+</html>

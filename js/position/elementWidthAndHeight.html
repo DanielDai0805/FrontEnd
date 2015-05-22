@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		/**
+			width height
+			style.width:样式宽
+			clientWidth:可视区宽
+			offsetWidth:占位宽
+		*/
+	</style>
+	<script>
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			console.debug(oDiv.style.width);//100px
+			console.debug(oDiv.clientWidth);//样式宽+padding
+			console.debug(oDiv.offsetWidth);//样式宽+padding+border
+		}
+	</script>
+</head>
+<body>
+	<div id="div1" style="width: 100px; height: 100px; border: 1px solid red; padding: 10px; margin: 10px;">
+	</div>
+</body>
+</html>
