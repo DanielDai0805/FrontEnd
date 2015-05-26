@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+	#iframe1{ width:500px; height:300px; margin-top:50px; }
+</style>
+<script>
+/*
+	为了操作iframe，所以需要找到iframe，并且给iframe的window加上一个事件来找到对应的元素
+*/
+	window.onload = function(){
+		document.getElementById("oBtn").onclick = function(){
+			var iframe = document.getElementById("iframe1");
+			//console.debug(iframe.contentWindow);//这个方法可以得到iframe的window对象
+			//iframe.contentDocument得到的是iframe的document
+			iframe.contentDocument.getElementById("div1").style.color = "red";		
+		}
+	}
+</script>
+</head>
+	
+<body>
+	<input type="button" value="change color" id="oBtn">
+    <iframe  id="iframe1" src="iframe1.html"></iframe>
+</body>
+</html>

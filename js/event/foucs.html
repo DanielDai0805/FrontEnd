@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		
+	</style>
+	<script>
+		window.onload = function(){
+			var oTxt = document.getElementById("txt");
+			oTxt.onfocus = function(){
+				if(this.value==="请输入值..."){
+					this.value="";
+				}
+			}
+			oTxt.onblur = function(){
+				if(this.value===""){
+					oTxt.value = "请输入值...";
+				}
+			}
+
+			oTxt.focus();
+			
+			var oBtn = document.getElementById("btn");
+			oBtn.onclick = function(){
+					oTxt.select();
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<input id="txt" type="text"/><input id="btn" type="button" value="select All"/>
+</body>
+</html>

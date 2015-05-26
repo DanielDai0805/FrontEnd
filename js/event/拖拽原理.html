@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#div1{ width:100px;height:100px; background:red; position:absolute;}
+		img{position:absolute;left:200px; top:200px;}
+	</style>
+	<script>
+		/**
+			全局捕获
+				当我们给一个元素设置全局捕获以后，那么这个元素就会监听后续发生的所有事件，当有事件发生的时候，就会被当前设置了全局捕获的元素所触发
+				ps：ie有，并且有效果
+					ff有，但是没有效果
+					chrome 没有
+
+
+			拖拽的问题
+				拖拽的时候，如果有文字被选中，会产生问题
+					原因：当鼠标按下的时候，如果页面中的文字被选中，那么会触发浏览器默认拖拽文字的效果
+						解决：
+							标准：阻止默认行为
+							非标准ie:全局捕获
+				拖拽图片会有问题，原因，解决的办法同上
+		*/
+		function drag(obj){
+
+			obj.onmousedown = function(ev){
+				var ev = ev||event;
+
+				var disX = ev.clientX - this.offsetLeft;
+				var disY = ev.clientY - this.offsetTop;
+
+				if(obj.setCapature){
+					obj.setCapatue();
+				}
+
+				document.onmousemove = function(ev){
+					var ev = ev||event;
+					var L = ev.clientX - disX;
+					var T = ev.clientY - disY;
+
+					if(L < 0){
+						L = 0;
+					}else if(L>document.documentElement.clientWidth-obj.offsetWidth){
+						L = document.documentElement.clientWidth-obj.offsetWidth;
+					}
+
+					if(T<0){
+						T = 0;
+					}else if(T>document.documentElement.clientHeight-obj.offsetHeight){
+						T = document.documentElement.clientHeight-obj.offsetHeight
+					}
+					
+					obj.style.left = L +'px';
+					obj.style.top = T+'px';
+				}
+
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+					//释放全局捕获 releaseCapture();
+						if ( obj.releaseCapture ) {
+							obj.releaseCapture();
+						}
+
+				}
+
+				return false;
+			}
+
+		}
+
+		window.onload = function(){
+			var oDiv1 = document.getElementById("div1");
+			var oImg = document.getElementById("img");
+			drag(oDiv1);
+			drag(oImg);
+		}
+	</script>
+</head>
+<body>
+	
+	<div id="div1"></div>
+	<img id="img" src="../../imgs/1.jpg">
+</body>
+</html>

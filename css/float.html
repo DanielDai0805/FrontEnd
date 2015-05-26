@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		/**
+			Resource: https://docs.webplatform.org/wiki/tutorials/floats_and_clearing
+
+			*  the float property forces an element to the left or right. This is s simple way to control its position and size.
+			*  The rest of the document's content normally flows around the floated element.You can control this by using the clear property on other elements to make them stay clear of floats
+			*  A floated box is taken out of the document flow and shifted as far as possible to the left or to the right,depending on the specified floating direction. "As far as possible "usually means until the outer edge of the float touched the edge of the containing block(the inside of its padding if any)
+			*  The alert reader(细心读者) may have noticed that isaid "usually"above,if there is already a box floated to the flef when we float another box in the same direction,the second box will stop when it touches the first box.in other words,floats don't climb on top of one another
+
+			PS:Using negative margins on floats can be very useful in certain types of multi-column layouts;
+
+		*/
+		#span-a{
+			float:left;
+			background-color:#cfc;
+			color: #030;
+			padding: 1em 1em 10em;/**proof that .the float have out of the document flow.*/
+		}
+		p{
+			border:1px solid #f00;
+			padding:1em;
+			background-color:#ff9;
+		}
+		#span-b{
+			float:left;
+			background-color:#ccf;
+			color:#003;
+			padding:1em;
+			margin-left:1em;
+			margin-right: 1em;
+		}
+		#span-c{
+			float:left;
+			background-color: #fcc;
+			color:#300;
+			padding:2em 1em;
+			margin-top:2em;
+			margin-bottom:2em;
+			margin-left:-4em;/**Who said floats can’t appear on top of other floats? Note how the negative left margin moves the entire float to the left.*/
+		}
+
+	</style>
+	<script>
+		window.onload = function(){
+			
+		}
+	</script>
+</head>
+<body>
+	   <p id="p1"><span id="span-a">Lorem ipsum</span>
+       <span id="span-b">dolor sit amet</span>
+       <span id="span-c">consectetuer</span> adipiscing elit.
+       Curabitur feugiat feugiat purus.
+       Aenean eu metus. Nulla facilisi.
+       Pellentesque quis justo vel massa suscipit sagittis.
+       Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
+       Quisque mollis, justo vel rhoncus aliquam, urna tortor varius lacus, ut tincidunt metus arcu vel lorem.
+       Praesent metus orci, adipiscing eget, fermentum ut, pellentesque non, dui.
+       Sed sagittis, metus a semper dictum, sem libero sagittis nunc, vitae adipiscing leo neque vitae tellus.
+       Duis quis orci quis nisl nonummy dapibus.
+       Etiam ante. Phasellus imperdiet arcu at odio.
+       In hac habitasse platea dictumst. Aenean metus.
+       Quisque a nibh. Morbi mattis ullamcorper ipsum.
+       Nullam odio urna, feugiat sed, bibendum sed, vulputate in, magna.
+       Nulla tortor justo, convallis iaculis, porta condimentum, interdum nec, arcu.
+       Proin lectus purus, vehicula et, cursus ut, nonummy et, diam.</p>
+ 
+       <p id="p2">Nunc ac elit. Vestibulum placerat dictum nibh. Proin massa.
+       Curabitur at lectus egestas quam interdum mollis.
+       Cras id velit a lacus sollicitudin faucibus.
+       Proin at ante id nisi porttitor scelerisque.
+       In metus. Aenean nonummy semper enim.
+       Aenean tristique neque quis arcu tincidunt auctor.
+       Fusce consequat auctor ligula.
+       Fusce nulla lorem, sagittis a, lacinia et, nonummy in, eros.
+       In nisi augue, aliquam eget, convallis vel, malesuada quis, libero.</p>
+ 
+       <p id="p3">Hello, World!</p>
+	
+</body>
+</html>

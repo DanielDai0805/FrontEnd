@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		/**
+			linera-gradient([<起点>||<角度>,]?<点>,<点>...)
+			只能用在背景上
+				-IE
+				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#ff0000',GradientType='1');
+			参数
+				-起点：从什么方向开始渐变
+					》left  top  left top
+				-角度：从什么角度开始渐变
+					》xxx deb的形式
+				-点：渐变点的颜色和位置
+					》black 50%，位置可选
+		*/
+		.box{width:300px;height:300px;border:10px solid #000;background-image: -webkit-linear-gradient(left top,red,blue)}
+	</style>
+	<script>
+		window.onload = function(){
+			
+		}
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

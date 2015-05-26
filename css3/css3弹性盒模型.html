@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		/**
+			在使用弹性盒模型的时候，父元素必须要加上display:box或display:inline-box;
+			box-orient
+			box-direction: normal|reverse|inherit;盒子方向
+			box-ordinal-group:盒子的显示次序;
+			box-flex:按照比例来设置盒子的大小;或者固定和比例来算
+			box-pack: start end center justify;
+			box-align:规定如何对齐子元素;
+		*/
+		.box{height:100px;display:-webkit-box; border:5px solid black; padding:5px;
+				-webkit-box-direction:-reverse; -webkit-box-pack:justify;
+			}
+		.box div{width:100px;height:100px; background:red; border:1px solid #fff;}
+		.box div:nth-of-type(1){-webkit-box-ordinal-group:-2;-webkit-box-flex:-1;}
+		.box div:nth-of-type(2){-webkit-box-ordinal-group:-3;-webkit-box-flex:-2;}
+		.box div:nth-of-type(3){-webkit-box-ordinal-group:-4;-webkit-box-flex:-3;}
+		.box div:nth-of-type(4){-webkit-box-ordinal-group:-1;-webkit-box-flex:-4;}
+	</style>
+	<script>
+		window.onload = function(){
+			
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+	</div>
+	
+</body>
+</html>

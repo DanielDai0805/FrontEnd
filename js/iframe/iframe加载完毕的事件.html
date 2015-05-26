@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+	window.onload = function(){
+		var oIframe = document.createElement("iframe");
+		oIframe.src = "iframe1.html";
+		document.body.appendChild(oIframe);
+		/*oIframe.onload  = function(){
+			alert("1");	
+		}*/
+		//ie要通过绑定的形式来添加时间
+		oIframe.attachEvent("onload",function(){
+			alert("q");	
+		});
+	}
+	
+</script>
+</head>
+	
+<body>
+	
+</body>
+</html>

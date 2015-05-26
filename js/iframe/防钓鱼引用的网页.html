@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+	//在自己的站点作一个处理，判断当前站点的最顶级是不是自己的，不是自己的，就赋值为自己的
+	window.onload = function(){
+		if(window != window.top){
+			window.top.location.href = window.location.href;
+		}	
+	}
+	
+</script>
+</head>
+	
+<body>
+	
+</body>
+</html>

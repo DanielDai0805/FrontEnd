@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		
+	</style>
+	<script>
+		/**
+			地址栏的值出现了变化，这样就会出现历史管理
+		*/
+		window.onload = function(){
+
+			var oInput = document.getElementById("input1");
+			var oDiv1 = document.getElementById("div1");
+
+			//由于最好不要在地址栏中显示带有，的值，所以定义了一个json对象{"随机数"：值}
+			var obj = {};
+			oInput.onclick = function(){
+				var number = randomNum(35,7);
+				oDiv1.innerHTML = number;
+				var oRD = Math.random();
+
+				obj[oRD] = number;
+				window.location.hash = oRD;
+
+				window.onhashchange = function(){
+					//当hash值发生改变，获取地址栏中的信息，并且把地址栏中的信息加到div中，后面加上一个||""，这是因为obj的属性为null的时候，必然导致number的值为undefined
+
+					var number = obj[window.location.hash.substring(1)]||"";
+					oDiv1.innerHTML = number;
+				}
+			}
+
+			
+
+			function randomNum(alls,now){
+				var totalArr = [];
+				var arr = [];
+				for(var i=0;i<alls;i++){
+					totalArr.push(i);
+				}
+
+				for(var i=0;i<now;i++){
+					//随机产生一个索引
+					var index = Math.floor(Math.random()*totalArr.length);
+					var ele = totalArr.splice(index,1);
+					arr.push(ele);
+				}
+				return arr;
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="input1" type="button" value="35选7"/>
+	<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		*{margin:0;padding:0;}
+		div{height:100px;width:100px; position:absolute; background:red;}
+	</style>
+	<script>
+		window.onload = function(){
+			var oDiv = document.getElementById("div");
+			document.onmousemove = function(ev){
+				var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+				var ev = ev || event;
+				oDiv.style.left = ev.clientX + 'px';
+				oDiv.style.top = ev.clientY +scrollTop + 'px';
+			}
+		}
+	</script>
+</head>
+<body style="height:2000px;">
+	<div id="div"></div>
+</body>
+</html>

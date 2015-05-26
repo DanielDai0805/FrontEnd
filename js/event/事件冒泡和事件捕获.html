@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		div {padding: 40px;}
+		#div1 {background:red}
+		#div2 {background:green}
+		#div3 {background:blue; position: absolute; top: 300px;}
+
+	</style>
+	<script>
+		/**
+			事件冒泡：当一个元素接收到事件的时候，会把他接收到事件传播给他的父级，一直到顶层window
+		*/
+		
+		window.onload = function(){
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			var oDiv3 = document.getElementById("div3");
+			function f1(){
+				console.debug(this.id);
+			}	
+			oDiv1.onclick = f1;	
+		}
+	</script>
+</head>
+<body>
+	
+	<div id="div1">
+    	<div id="div2">
+        	<div id="div3"></div>
+        </div>
+    </div>
+	
+</body>
+</html>
