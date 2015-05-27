@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		section.page           { width: 8.5in; height: 11in; position: absolute; }
+		section.page > div     { border: #777 medium solid }
+		#title                 { height: 2.5em; }
+		#intro, #col1, #col2a, #col2b, #pull
+		                       { width: 45%; position: absolute; }
+		#intro, #col2a         { top: 5em; height: 3em; }
+		#col1                  { top: 10em; height: 52em; }
+		#col2a, #col2b, #pull  { left: 51%; }
+		#col2a                 { top: 5em; height: 23em; }
+		#col2b                 { top: 40em; height: 22em; }
+		#pull                  { top: 30em; height: auto; }
+	</style>
+	<script>
+		window.onload = function(){
+			
+		}
+	</script>
+</head>
+<body>
+	<section class="page">
+   <div id="title"> <h1>Region #1</h1>         </div>
+   <div id="intro"> <h1>Region #2</h1>         </div>
+   <div id="col1">  <h1>Region #3</h1>         </div>
+   <div id="col2a"> <h1>Region #4</h1>         </div>
+   <div id="pull">  <h1>(Separate Region)</h1> </div>
+   <div id="col2b"> <h1>Region #5</h1>         </div>
+ </section>
+</body>
+</html>

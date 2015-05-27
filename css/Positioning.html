@@ -4,18 +4,36 @@
 	<style>
 		/**
 			Resource:https://docs.webplatform.org/wiki/tutorials/layout_fundamentals
+					 https://docs.webplatform.org/wiki/tutorials/absolute_and_fixed_positioning
 			
 			Positioning
 
 				relative:	
 
 				fixed:The element's position is fixed.Specify the element's position relative to the document window,Even if the rest of the doucument scrolls ,the element remains fixed.
+					fixed positioning is really just a specialized form of absolute positioning ;lements with fixed positioning are fixed relative to the viewport/browser window rather than the containing element;even if the page is scrolled .they stay in exactly the same position inside the browser window.
 
 				absolute: The element's position is fixed relative to a parent element .only a parent that is itself positioned with relative, fixed or absolute will do.You can make any parent elment suitable by specifying position:relative; for it without specifying any shift.
 
 				static:	the default .Use this value if you need to turn positioning off explicity;
 
 				PS: Along with these values of the position property (except for static),specify one or more of the properties: top, right bottom left width height to identify where you want the element to appear .and perhaps also its size;
+
+			how to find the containing block
+				1 look at the parent element of the absolutely positioned element--does that element's position property have one of the values relative absolute or fixed?
+				2 if so,you've found the containing block;
+				3 if not ,move to the parent's parent element and repeat from step1 until you find the containing block or run out of ancestors
+				4  if you've reached the heml element without finding a positioned ancestor ,then the containing block is the html element.
+
+			the third dimension --z-index
+				1.	The background and borders of the elements that form the stacking context.
+				2.	Positioned descendants with negative stack levels
+				3.	Block-level descendants in the normal flow
+				4.	Floated descendants.
+				5.	Inline-level descendants in the normal flow
+				6.	Positioned descendants with the stack level set as auto or zero
+				7	Positioned descendants with positive stack levels
+
 
 		*/
 	</style>
