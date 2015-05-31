@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		ul li{list-style-type: none; background-color: yellow; width:100px; height: 30px; margin:30px;}
+		div{width: 100px;height: 100px; background:red; margin-left:200px;}
+	</style>
+	<script>
+		window.onload = function(){
+			var i = 0;
+			var oLis = document.getElementsByTagName("li");
+			var oDiv = document.getElementById("div1");
+			var oImg = document.getElementById("img1");
+
+
+			for(var i=0;i<oLis.length;i++){
+				
+				oLis[i].ondragstart = function(ev){
+					var ev = ev|| window.event;
+					oImg.style.display = "block";
+					ev.dataTransfer.setData("name","Daniel");//设置，这里方便以后取值
+					ev.dataTransfer.effectAllowed="linkMove";//effectAllowed : 设置光标样式(none, copy, copyLink, copyMove, link, linkMove, move, all 和 uninitialized)
+					ev.dataTransfer.setDragImage(oImg,0,0);//三个参数：指定的元素，坐标X，坐标Y
+					this.style.background = 'green';
+				}
+				oLis[i].ondrag = function(){
+					//document.title = i++;
+				}
+				oLis[i].ondragend = function(){
+					this.style.background = 'yellow';
+				}
+			}	
+
+			oDiv.ondragenter = function(ev){
+				var ev = ev || event;
+				this.style.background="blue"
+				console.log(ev.dataTransfer.getData("name"));
+			}
+			oDiv.ondragover = function(ev){
+				document.title = i++;
+				ev.preventDefault();	
+			}
+			oDiv.ondragleave = function(){
+				this.style.background = 'red';
+			}
+			oDiv.ondrop = function(){
+				//要想触发drop事件，必要在dragover当中阻止默认事件
+				//alert("123");
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li draggable="true"></li>
+		<li draggable="true"></li>
+		<li draggable="true"></li>
+	</ul>
+	<div id="div1"></div>
+	<img id="img1" src="../../imgs/1.jpg" style="display:none"/>
+</body>
+</html>

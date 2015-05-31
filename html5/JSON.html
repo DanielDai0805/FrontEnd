@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		
+	</style>
+	<script>
+		window.onload = function(){
+			/**
+				1，eval把字符串解析成js
+				2，按照js的语法来调用
+			*/
+			var str = "function show(){console.log('123')}";
+			eval(str);
+			show();
+
+			/**
+				eval:可以解析任何的字符串
+				parse：只能解析JSON形式的js(安全)
+			*/
+			var str2 = '{"name":"Daniel"}';//一定是严格的JSON形式 
+			var json = JSON.parse(str2);
+			console.log(json.name);
+
+			var json2Str = {name:"hello"};
+			console.log(JSON.stringify(json2Str));
+
+			/**
+				利用JSON方法来实现深拷贝
+
+			*/
+			var a = {name:'hello'};
+			var str = JSON.stringify(a);
+			b = JSON.parse(str);
+			b.name="hi";
+			console.log(a.name);
+
+			/**
+				http://www.json.org/
+				json2.js这样可以实现浏览器的兼容
+			*/
+		}
+	</script>
+</head>
+<body>
+	
+	
+</body>
+</html>

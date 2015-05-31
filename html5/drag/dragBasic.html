@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		ul li{list-style-type: none; background-color: yellow; width:100px; height: 30px; margin:30px;}
+		div{width: 100px;height: 100px; background:red; margin-left:200px;}
+	</style>
+	<script>
+		/**
+			*设置元素可拖动draggable=true;
+
+			**事件的类型
+				拖放元素的事件
+					dragstart:拖拽前触发
+					drag: 拖拽前与拖拽结束之间，连续触发
+					dragend: 拖拽结束
+				目标元素事件
+					dragenter:进入目标元素触发，相当于mouseover
+					dragover:进入目标元素，离开目标元素之间连续触发
+					dragleave:离开目标元素触发，相当于mouseout
+					drop:在目标元素上面释放鼠标触发
+			**事件的执行顺序
+				当不触发drop事件的时候
+					dragstart -->drag--dragenter-->dragover--dragleave-->dragend
+				触发drop事件的时候
+					dragstart -->drag--dragenter-->dragover-->drop-->dragend
+		*/
+
+		window.onload = function(){
+			var i = 0;
+			var oLis = document.getElementsByTagName("li");
+			var oDiv = document.getElementById("div1");
+			for(var i=0;i<oLis.length;i++){
+				oLis[i].ondragstart = function(){
+					this.style.background = 'green';
+				}
+				oLis[i].ondrag = function(){
+					//document.title = i++;
+				}
+				oLis[i].ondragend = function(){
+					this.style.background = 'yellow';
+				}
+			}	
+
+			oDiv.ondragenter = function(){
+				this.style.background="blue"
+			}
+			oDiv.ondragover = function(ev){
+				document.title = i++;
+				ev.preventDefault();	
+			}
+			oDiv.ondragleave = function(){
+				this.style.background = 'red';
+			}
+			oDiv.ondrop = function(){
+				//要想触发drop事件，必要在dragover当中阻止默认事件
+				//alert("123");
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li draggable="true"></li>
+		<li draggable="true"></li>
+		<li draggable="true"></li>
+	</ul>
+	<div id="div1"></div>
+</body>
+</html>
