@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#myCanvas{background:white;}
+		body{background:black;}
+		/**
+			绘制路径	
+				beginPath:开始绘制路径;
+				closePath:结束绘制路径;
+				moveTo：移动到绘制的新目标点
+				lineto: 新的目标点;
+				stroke:画线，默认黑色;
+				fill:填充，默认黑色;
+				rect：矩形区域
+				clearRect：删除一个画布的矩形区域
+				save：保存路径
+				restore：恢复路径
+		*/
+	</style>
+	<script>
+		window.onload = function(){
+			var myCanvas = document.getElementById("myCanvas");
+			var cxt = myCanvas.getContext("2d");
+			cxt.beginPath();
+
+			cxt.save();
+			cxt.fillStyle="red";
+			cxt.moveTo(100,100);
+			cxt.lineTo(150,200);
+			cxt.lineTo(200,200);
+			cxt.closePath();
+			cxt.fill();
+
+			cxt.restore();
+
+			cxt.beginPath();
+			cxt.moveTo(100,200);
+			cxt.lineTo(150,300);
+			cxt.lineTo(200,300);
+			cxt.closePath();
+			cxt.fill();
+
+			//cxt.clearRect(0,0,myCanvas.width,myCanvas.height);//清空画布
+			
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400s"></canvas>
+</body>
+</html>
