@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body{background:black;}
+		#myCanvas{background:white;}
+	</style>
+	<script>
+		window.onload = function(){
+			var INow = 0;
+			var oInput = document.getElementsByTagName("input");
+			var oImg = document.getElementById("img");
+			var oImgWith = oImg.width;
+			var oImgHeight = oImg.height;
+			var miaovImg = new Image();
+			miaovImg.src = "../imgs/miaov.png";
+			miaovImg.onload = function(){
+				draw(oImg);
+			}
+			function draw(obj){
+				var oC = document.createElement("canvas");
+				var ctx = oC.getContext("2d");
+				oC.width = oImgWith;
+				oC.height= oImgHeight;
+				oImg.parentNode.replaceChild(oC,obj);
+				ctx.drawImage(obj,0,0);
+				oInput[1].onclick = function(){
+					if(iNow ===3){
+						iNow = 0;
+					}else{
+						iNow++;
+					}
+					toChange();
+				}	
+				function toChange(){
+				switch(iNow){
+					case 1:
+						oC.width = obj.height;
+						oC.height = obj.width;
+						//cxt.rotate();
+						ctx.drawImage(obj,0,-obj.height);
+					break;
+					case 2:
+					break;
+					case 3:
+					break;
+					case 0:
+					break;
+				}
+			}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="←"/>
+	<input type="button" value="→"/>
+	<div>
+		<img id="img" src="../imgs/miaov.png"/>
+	</div>
+</body>
+</html>

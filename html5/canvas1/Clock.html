@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body{background:black;}
+		#myCanvas{background:white;}
+	</style>
+	<script>
+		window.onload = function(){
+			function draw(){
+
+				var c = document.getElementById("myCanvas");
+				var cxt = c.getContext("2d");
+				var oDate = new Date();
+				var h = oDate.getHours();
+				var m = oDate.getMinutes();
+				var s = oDate.getSeconds();
+				var r = 100;
+				var hVal = (-90+h*30+m/12)*Math.PI/180;	
+				var mVal = (-90+m*6)*Math.PI/180;	
+				var sVal = (-90+s*6)*Math.PI/180;				
+				cxt.clearRect(0,0,c.width,c.height);
+
+				//画60个小格子,并在上面覆盖一个白色圆形
+				cxt.beginPath();
+					for(var i=0;i<60;i++){
+						cxt.moveTo(200,200);
+						cxt.arc(200,200,100,i*6*Math.PI/180,(i+1)*6*Math.PI/180);	
+					}	
+				cxt.closePath();
+				cxt.stroke();
+
+				cxt.fillStyle="white";
+				cxt.beginPath();
+					cxt.arc(200,200,100*19/20,0,360*Math.PI/180);
+				cxt.closePath;
+				cxt.fill();
+
+				//画12个小格子，并在上面覆盖一个白色圆形
+
+				cxt.beginPath();
+					for(var i=0;i<12;i++){
+						cxt.moveTo(200,200);
+						cxt.arc(200,200,100,i*30*Math.PI/180,(i+1)*30*Math.PI/180);	
+					}	
+				cxt.closePath();
+				cxt.stroke();
+
+				cxt.lineWidth  = 5;
+				cxt.fillStyle="white";
+				cxt.beginPath();
+					cxt.arc(200,200,100*18/20,0,360*Math.PI/180);
+				cxt.closePath;
+				cxt.fill();
+
+				//画时针
+				cxt.lineWidth=5;
+				cxt.beginPath();
+				cxt.moveTo(200,200);
+				cxt.arc(200,200,r*10/20,hVal,hVal);
+				cxt.closePath;
+				cxt.stroke();
+
+				//画分针
+				cxt.lineWidth=3;
+				cxt.beginPath();
+				cxt.moveTo(200,200);
+				cxt.arc(200,200,r*15/20,mVal,mVal);
+				cxt.closePath;
+				cxt.stroke();
+
+				//画秒针
+				cxt.lineWidth=1;
+				cxt.beginPath();
+				cxt.moveTo(200,200);
+				cxt.arc(200,200,r*17/20,sVal,sVal);
+				cxt.closePath;
+				cxt.stroke();	
+			}
+			draw();
+			setInterval(draw,1000);
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<span>不支持canvas</span><!--不支持canvas的时候显示-->
+	</canvas>
+</body>
+</html>

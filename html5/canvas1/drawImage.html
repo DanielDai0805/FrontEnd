@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body{background:black;}
+		#myCanvas{background:white;}
+	</style>
+	<script>
+		/**
+			插入图片
+				等图片加载完，再执行canvas操作
+					--图片预加载，在onload中调用方法
+				drawImage(oImg,x,y,w,h);
+					--oImg:当前图片的x y 坐标w h宽高
+					--例子：微博的图片旋转的效果
+			设置背景
+				createPattern(oImg,平铺方式)
+					-2 参数：repeat、 repeat-x、repeat-y、no-repeat
+
+		*/
+		window.onload = function(){
+			var c = document.getElementById("myCanvas");
+			var cxt = c.getContext("2d");	
+			var oCat = new Image();
+			oCat.src =  "../imgs/cat.png";
+			oCat.onload = function(){
+				draw(this);
+			}
+			function draw(oImg){	
+				cxt.drawImage(oImg,0,0);
+			}	
+		}		
+
+
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<span>不支持canvas</span><!--不支持canvas的时候显示-->
+	</canvas>
+</body>
+</html>

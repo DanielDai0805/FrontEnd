@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body{background:black;}
+		#myCanvas{background:white;}
+	</style>
+	<script>
+		window.onload = function(){
+			var c = document.getElementById("myCanvas");
+			var cxt = c.getContext("2d");
+			var num = 0;
+			var num2 = 0;
+			var value = 1;
+			cxt.translate(100,100);
+
+			setInterval(function(){
+				num++;
+				cxt.save();
+				cxt.clearRect(-100,-100,c.width,c.height);
+				if(num2===100){
+					value = -1
+				}else if(num2===0){
+					value = 1;
+				}
+				num2+=value;
+				cxt.scale(num2*1/50,num2*1/50);
+				cxt.rotate(num*Math.PI/180);
+				cxt.translate(-50,-50);//这个可以让方块扰中心旋转
+				cxt.fillRect(0,0,100,100);
+				cxt.restore();
+			},30);
+			
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<span>不支持canvas</span><!--不支持canvas的时候显示-->
+	</canvas>
+</body>
+</html>

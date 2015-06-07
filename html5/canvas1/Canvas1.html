@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#myCanvas{border:dotted;}
+	</style>
+	<script>
+		/**
+			HTML5 defines the <canvas> element as "a resolution-dependent bitmap canvas which can be userd for rendering graphs ,game graphics or other visual images on the fly" A canvas is a rectangle in your page
+			where you can use javascript to draw anything you want
+
+			so what does a canvas look like? Nothing ,really .A <canvas> element has no content and no border of its own.
+		*/
+		window.onload = function(){
+			
+			draw();
+		}
+		function draw(){
+			var b_canvas = document.getElementById("myCanvas");
+			var context = b_canvas.getContext("2d");
+			//b_context.fillRect(50,25,150,100);
+			context.beginPath();
+			context.moveTo(0, 40);
+			context.lineTo(240, 40);
+			context.moveTo(260, 40);
+			context.lineTo(500, 40);
+			context.moveTo(495, 35);
+			context.lineTo(500, 40);
+			context.lineTo(495, 45);
+
+			context.moveTo(60, 0);
+			context.lineTo(60, 153);
+			context.moveTo(60, 173);
+			context.lineTo(60, 375);
+			context.moveTo(65, 370);
+			context.lineTo(60, 375);
+			context.lineTo(55, 370);
+
+			context.strokeStyle = "#000";
+			context.stroke();
+		}
+		
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="500" height="500">
+		<span>不支持canvas</span><!--不支持canvas的时候显示-->
+	</canvas>
+	<input type="button" onclick="draw()" value="click to draw on this canvas"/>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body{background:black;}
+		#myCanvas{background:white;}
+	</style>
+	<script>
+			/**
+			画圆
+				arc(x, y, radius, startAngle, endAngle, anticlockwise)
+				x and y are the coordinates of the circle'scenter.
+				Radius is self explanatory
+				the startAngle and endAngle parameters define the start and end points of the arc inradians(弧度)
+				anticlockwise parameter is a boolean value which when true draws the arc anticlockwise
+				1弧度 = 180°/PI
+				1° = PI/180;
+			绘制其它曲线
+				arcTo(x1,y1,x2,y2,r);
+					--第一组坐标、第二组坐标、半径
+				ouadraticCurveTo(dx,dy,x1,y1);
+					--贝塞尔曲线：第一组控制点、第二组结束坐标
+				bezierCurveTo(dx1,dy1,dx3,dy3,x1,y1);
+					--贝塞尔曲线：第一组控制点、第二组控制点、第三组结束坐标
+
+			*/
+		window.onload = function(){
+			var c = document.getElementById("myCanvas");
+			var cxt = c.getContext("2d");
+			//cxt.moveTo(200,200);
+			/**
+				圆形
+				cxt.arc(200,200,100,0,Math.PI/180*90,false);
+				cxt.stroke();
+
+			*/
+			/**
+				cxt.moveTo(100,200);
+				cxt.arcTo(100,100,200,100,50);
+				cxt.stroke();
+			*/
+			
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<span>不支持canvas</span><!--不支持canvas的时候显示-->
+	</canvas>
+</body>
+</html>
