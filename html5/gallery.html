@@ -1,0 +1,56 @@
+<html>
+<head>
+	<style>
+	body{
+		background:0 -100px repeat-x url(https://mdn.mozillademos.org/files/5415/bg_gallery.png) #4F191A;
+		margin:10px;
+	}
+	table{
+		margin:0 auto;
+	}
+	td{
+		padding:15px;
+	}
+	img{display:none;}
+	</style>
+	<script>
+		function draw(){
+			for(var i=0;i<document.images.length;i++){
+				if(document.images[i].getAttribute("id")!='frame'){
+				    canvas = document.createElement('canvas');
+					canvas.setAttribute('width',132);
+					canvas.setAttribute('height',150);		
+
+					 // Insert before the image
+				      document.images[i].parentNode.insertBefore(canvas,document.images[i]);
+
+				      ctx = canvas.getContext('2d');
+
+				      // Draw image to canvas
+				      ctx.drawImage(document.images[i],15,20);
+
+		      		// Add frame
+		    		 ctx.drawImage(document.getElementById('frame'),0,0);
+				}
+			}
+		}
+	</script>
+</head>
+ <body onload="draw();">
+     <table>
+      <tr>
+        <td><img src="imgs/gallery_1.png"></td>
+        <td><img src="imgs/gallery_2.png"></td>
+        <td><img src="imgs/gallery_1.png"></td>
+        <td><img src="imgs/gallery_2.png"></td>
+      </tr>
+      <tr>
+      	<td><img src="imgs/gallery_1.png"></td>
+        <td><img src="imgs/gallery_2.png"></td>
+        <td><img src="imgs/gallery_1.png"></td>
+        <td><img src="imgs/gallery_2.png"></td>
+      <tr>
+     </table>
+     <img id="frame" src="https://mdn.mozillademos.org/files/242/Canvas_picture_frame.png" width="132" height="150">
+ </body>
+</html>

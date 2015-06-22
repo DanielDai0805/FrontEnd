@@ -26,7 +26,7 @@
 				num2+=value;
 				cxt.scale(num2*1/50,num2*1/50);
 				cxt.rotate(num*Math.PI/180);
-				cxt.translate(-50,-50);//这个可以让方块扰中心旋转
+				cxt.translate(-50,-50);//这样图片的中心点，就在原点
 				cxt.fillRect(0,0,100,100);
 				cxt.restore();
 			},30);

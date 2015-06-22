@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body{background:black;font-size:30px;}
+		#myCanvas{background:white;}
+		#ul{color:white;float: left;}
+		
+	</style>
+	<script>
+		window.onload = function(){
+			var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
+			
+			
+			var myImageData = ctx.getImageData(0,0,100,100);
+
+			//console.debug(myImageData.width+":"+myImageData.height);
+			console.debug(myImageData.data[0]);//R
+			console.debug(myImageData.data[1]);//G
+			console.debug(myImageData.data[2]);//B
+			console.debug(myImageData.data[3]);//A
+
+			/**
+			for(var i=0;i<myImageData.width*myImageData.height;i++){
+				myImageData.data[4*i] = 255;
+				myImageData.data[4*i+1] = 0;
+				myImageData.data[4*i+2] = 0;
+				myImageData.data[4*i+3] = 100;
+			}
+			*/
+			var oLis = document.getElementsByTagName("li");
+			for(var i=0;i<oLis.length;i++){
+				oLis[i].onclick = function(){
+					
+					ctx.fillStyle="red";
+					var h = 180;
+					var text = this.innerHTML;
+					ctx.font = h+'px impact';
+					ctx.textBaseline = 'top';
+					var w = ctx.measureText(text).width;
+					ctx.fillText(text,(c.width-w)/2,(c.height-h)/2);
+
+
+
+					/**
+						要求：从该字体中，选择10%来显示
+						step 1:获取该字体的区域
+						step 2:利用生成随机数的函数，从该文字区域中，随机选择10%的像素
+						step 2:创建一个和该字体区域相同的大小
+						step 3:把获取的10%的像素，添加到新创建字体区域
+					*/
+					var oImg = ctx.getImageData((c.width-w)/2,(c.height-h)/2,w,h);
+					ctx.clearRect(0,0,c.width,c.height);
+					var arr = randomArr(w*h,w*h/10);
+
+					var newImg = ctx.createImageData(w,h);
+					for(var i=0;i<arr.length;i++){
+						newImg.data[4*arr[i]] = oImg.data[4*arr[i]];
+						newImg.data[4*arr[i]+1] = oImg.data[4*arr[i]+1];
+						newImg.data[4*arr[i]+2] = oImg.data[4*arr[i]+2];
+						newImg.data[4*arr[i]+3] = oImg.data[4*arr[i]+3];
+					}
+					ctx.putImageData(newImg,(c.width-w)/2,(c.height-h)/2);
+				}
+			}
+			
+			function randomArr(iAll,iNow){
+				var arr = [];
+				var newArr = [];
+				for(var i=0;i<iAll;i++){
+					arr.push(i);
+				}
+
+				for(var i=0;i<iNow;i++){
+					newArr.push(arr.splice(Math.floor(Math.random()*arr.length),1));
+				}
+
+				return newArr;
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<span>不支持canvas</span><!--不支持canvas的时候显示-->
+	</canvas>
+	<ul id="ul">
+		<li>妙</li>
+		<li>味</li>
+		<li>课</li>
+		<li>堂</li>
+	</ul>
+</body>
+</html>

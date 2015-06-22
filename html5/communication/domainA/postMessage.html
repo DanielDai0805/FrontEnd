@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>		
+	<script>
+		window.onload = function(){
+			var btn = document.getElementById("btn");
+			var frameWindow = document.getElementById("iframe");
+			//同源策略的影响，获取的对象的权限终止与另外页面的window对象
+			//var frameDoc = frameWindow.contentDocument;
+			btn.onclick = function(){
+				frameWindow.contentWindow.postMessage('1','http://www.b.com');//arg1 发送的参数  arg2 接受的域名
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="btn" type="button" value="changeColor"/>
+	<iframe id="iframe"  src="http://www.b.com/postMessage.html"></iframe>
+</body>
+</html>

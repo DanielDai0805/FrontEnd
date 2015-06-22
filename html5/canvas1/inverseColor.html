@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body{background:black;}
+		#myCanvas{background:white;}
+	</style>
+	<script>
+	/**
+		反色:获取图片的每个像素的值，然后用255-当前获取的值
+		有同源策略
+
+	*/
+		window.onload = function(){
+			var oC = document.getElementById("myCanvas");
+			var ctx = oC.getContext("2d");
+
+			var oImg = new Image();
+			oImg.onload = function(){
+				draw(this);
+			}
+			oImg.src = "../imgs/miaov.png";
+
+
+			function draw(obj){
+				oC.width = obj.width;
+				ctx.drawImage(obj,0,0);
+
+				var w = obj.width;
+				var h = obj.height;
+
+				var oImg = ctx.getImageData(0,0,w,h);
+				/**
+					遍历每一行一列来进行反色
+				*/
+				for(var i=0;i<h;i++){
+					//每一行
+					for(var j =0;j<w;j++){
+						var result = [];
+						var color = getXY(oImg,j,i);
+						result[0]=255-color[0];
+						result[1]=255-color[1];
+						result[2]=255-color[2];
+						result[3]=255-color[3];
+						setXY(oImg,j,i,result);
+					}
+				}
+
+				ctx.putImage(oImg,0,h);
+			}
+			function getXY(obj,x,y){
+				var color = [];
+				var w = obj.width;
+				var h = obj.height;
+				var data = obj.data;
+
+				color[0] = data[(y*w+x)*4];
+				color[1] = data[(y*w+x)*4+1];
+				color[2] = data[(y*w+x)*4+2];
+				color[3] = data[(y*w+x)*4+3];
+				return color;
+			}	
+
+			function setXY(obj,x,y,color){
+				var w = obj.width;
+				var h = obj.height;
+				var data = obj.data;
+
+				data[(y*w+x)*4] = color[0];
+			    data[(y*w+x)*4+1] = color[1];
+				data[(y*w+x)*4+2] = color[2];
+			    data[(y*w+x)*4+3] = color[3];
+			}
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<span>不支持canvas</span><!--不支持canvas的时候显示-->
+	</canvas>
+</body>
+</html>

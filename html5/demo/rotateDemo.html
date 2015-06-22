@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body{background:black;}
+		#myCanvas{background:white;}
+		/**
+			rotate：默认是围绕着canvas的origin点在进行旋转
+		*/
+	</style>
+	<script>
+		window.onload = function(){
+			draw()
+		}
+		function draw(){
+			var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
+
+			ctx.save();
+			ctx.fillStyle="#0095DD";
+			ctx.fillRect(30,30,100,100);
+			ctx.rotate((Math.PI/180)*25);
+			ctx.fillStyle="#4D4E53";
+			ctx.fillRect(30,30,100,100);
+			ctx.restore();
+
+			
+			ctx.fillStyle = "#0095DD";
+  			ctx.fillRect(150, 30, 100, 100); 
+
+  			//原理：移动到中心，然后旋转，移动到原来的点
+  			ctx.translate(200,80);
+  		    ctx.rotate((Math.PI/180)*25); // rotate
+  			ctx.translate(-200, -80); // translate back
+  			ctx.fillStyle = "#4D4E53";
+  			ctx.fillRect(150, 30, 100, 100);
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<span>不支持canvas</span><!--不支持canvas的时候显示-->
+	</canvas>
+</body>
+</html>

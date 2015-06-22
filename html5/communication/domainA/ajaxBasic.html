@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>		
+	<script>
+	/**
+		XMLHttpRequest:  https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+						 https://docs.webplatform.org/wiki/apis/xhr/XMLHttpRequest
+						 http://www.w3school.com.cn/ajax/ajax_xmlhttprequest_send.asp
+	*/
+		window.onload = function(){
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				if(window.XMLHttpRequest){
+					var xhr = new XMLHttpRequest();
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							if(xhr.status == 200){
+								console.log(xhr.responseText);
+							}
+						}
+					}
+					xhr.open('get',"ajax.php",true);
+					xhr.send();
+				}			
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<input id="btn" type="button" value="click"/>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>		
+	<script>
+		/**
+			利用XMLHttpRequest的高级特性来实现Ajax的跨越问题，需要服务器端的配合
+			设置请求头  header("Access-Control-Allow-Origin:http://www.a.com");
+
+			XDomainRequest : IE如果想实现跨越请求，则需要使用这个对象来实现
+
+			var xhr = new oXDomainRequest();
+			xhr.onload = function(){
+				console.log(this.responseText);
+			}
+			xhr.open('get',"http://www.b.com/ajax.php",true);
+			xhr.send();
+		*/
+		window.onload = function(){
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				if(window.XMLHttpRequest){
+					var xhr = new XMLHttpRequest();
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							if(xhr.status == 200){
+								console.log(xhr.responseText);
+							}
+						}
+					}
+					xhr.open('get',"http://www.b.com/ajax.php",true);
+					xhr.send();
+				}			
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<input id="btn" type="button" value="click"/>
+</body>
+</html>

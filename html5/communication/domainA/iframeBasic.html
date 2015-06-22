@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>		
+	<script>
+		/**
+			对iframe进行操作
+				step 1:获取iframe的window对象
+				step 2:通过window对象来得到document对象，从而进行操作
+		*/
+		window.onload = function(){
+			var btn = document.getElementById("btn");
+			var frameWindow = document.getElementById("iframe");
+			var frameDoc = frameWindow.contentDocument;
+			btn.onclick = function(){
+				frameDoc.body.style.background='red';
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="btn" type="button" value="changeColor"/>
+	<iframe id="iframe"  src="iframeInIframeBascic.html"></iframe>
+</body>
+</html>

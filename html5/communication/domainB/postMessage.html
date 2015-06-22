@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>		
+	<script>
+		window.onload = function(){
+			/*
+				message: 当窗口接受到通过postMessage发送过来的数据的时候出发
+				ev.data: 发送过来的数据
+				ev.origin :发送消息的域
+			*/
+			window.addEventListener('message',function(ev){
+				console.debug(ev.origin);
+				if(ev.data == '1'){
+					document.body.style.background = 'red';
+				}
+			},false);
+		}
+	</script>
+</head>
+<body>
+	这里是b域下面的html页面
+</body>
+</html>

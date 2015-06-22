@@ -7,7 +7,7 @@
 	</style>
 	<script>
 		window.onload = function(){
-			var INow = 0;
+			var iNow = 0;
 			var oInput = document.getElementsByTagName("input");
 			var oImg = document.getElementById("img");
 			var oImgWith = oImg.width;
@@ -18,6 +18,7 @@
 				draw(oImg);
 			}
 			function draw(obj){
+				
 				var oC = document.createElement("canvas");
 				var ctx = oC.getContext("2d");
 				oC.width = oImgWith;
@@ -37,14 +38,27 @@
 					case 1:
 						oC.width = obj.height;
 						oC.height = obj.width;
-						//cxt.rotate();
+						//图片旋转后，x和y轴是不会变化
+						ctx.rotate((Math.PI/180)*90);
 						ctx.drawImage(obj,0,-obj.height);
 					break;
 					case 2:
+						oC.width = obj.width;
+						oC.height = obj.height;
+						ctx.rotate((Math.PI/180)*180);
+						ctx.drawImage(obj,-obj.width,-obj.height);
 					break;
 					case 3:
+						oC.width = obj.height;
+						oC.height = obj.width;
+						ctx.rotate((Math.PI/180)*270);
+						ctx.drawImage(obj,-obj.width,0);
 					break;
 					case 0:
+						oC.height =obj.height;
+						oC.width = obj.width;
+						ctx.rotate(0);
+						ctx.drawImage(obj,0,0);
 					break;
 				}
 			}

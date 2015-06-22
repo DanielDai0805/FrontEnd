@@ -1,0 +1,44 @@
+step1:找到apache/conf/extra/httpd-vhosts.conf
+step2:修改节点<VirtualHost *:80>下面的DocumentRoot和Directory
+
+
+for example
+<VirtualHost *:80>
+    ServerAdmin webmaster@dummy-host.hleclerc-PC.ingenidev
+    DocumentRoot "E:\gitRepo\FrontEnd\html5\communication\domainA"
+    ServerName www.a.com
+    <Directory "E:\gitRepo\FrontEnd\html5\communication\domainA">
+        AllowOverride all
+        Options FollowSymLinks IncludesNOEXEC Indexes
+        Order Allow,Deny
+        Allow from 127.0.0.1
+    </Directory>
+    #ServerAlias www.dummy-host.hleclerc-PC.ingenidev
+    #ErrorLog "logs/dummy-host.hleclerc-PC.ingenidev-error.log"
+    #CustomLog "logs/dummy-host.hleclerc-PC.ingenidev-access.log" common
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@dummy-host2.hleclerc-PC.ingenidev
+    DocumentRoot "E:\gitRepo\FrontEnd\html5\communication\domainB"
+    ServerName www.b.com
+    <Directory "E:\gitRepo\FrontEnd\html5\communication\domainB">
+        AllowOverride all
+        Options FollowSymLinks IncludesNOEXEC Indexes
+        Order Allow,Deny
+        Allow from 127.0.0.1
+    </Directory>
+</VirtualHost>
+
+
+step 3
+
+修改C:\Windows\System32\drivers\etc\hosts
+增加www.domainA.com 127.0.0.1 
+	www.domainB.com 127.0.0.1
+
+step 4
+
+记得修改Apache/conf下面的httpd.conf
+去掉Virtual Hosts下面的注释
+Include conf/extra/httpd-vhosts.conf，否则不能访问
