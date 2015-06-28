@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		/**
+			https://docs.webplatform.org/wiki/apis/web-storage/Storage
+		*/
+	</style>
+	<script>
+		window.onload = function(){
+			var aInput = document.getElementsByTagName('input');
+			var oTxt = document.getElementById("text");
+			aInput[0].onclick = function(){
+				//window.sessionStorage.setItem("name",oTxt.value);
+				window.localStorage.setItem("name",oTxt.value);
+			};
+			aInput[1].onclick = function(){
+				//var itemValue = window.sessionStorage.getItem("name");
+				var itemValue = window.localStorage.getItem("name",oTxt.value);
+				console.log(itemValue);
+			};
+			aInput[2].onclick = function(){
+				//window.sessionStorage.removeItem('name');
+				window.localStorage.removeItem('name');
+				//window.sessionStorage.clear();//清除全部
+			};
+			window.addEventListener('storage', function (event) {
+				//在对数据进行改变的窗口对象上是不会触发的并且必须在服务器的环境下才能执行
+				console.log(event.key, event.oldValue, event.newValue);
+				console.log(event.storageArea, event.url);
+			});
+
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="set"/>
+	<input type="button" value="get"/>
+	<input type="button" value="del"/>
+	<input id="text" type="text" />
+</body>
+</html>

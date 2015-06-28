@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="client.socket.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		var oBtn = document.getElementById('btn');
+		//var oDiv = document.getElementById('div1');
+		var socket = null;
+		oBtn.onclick = function(){
+			socket = io.connect('http://localhost:8888');
+
+			//client监听服务器端发送回来的事件名称,并且有服务器端发送回来的数据
+			socket.on('hello',function(data){
+				console.log(data);
+
+					//客户端也可以发送一个事件给服务器端
+					this.emit('hellotoo',"welcom welcom");
+			});
+		}
+	}
+</script>	
+</head>
+	
+<body>
+	<h1>HELLO,欢迎来NODE.JS</h1>
+	 <input type="button" value="send socke" id="btn" />
+</body>
+</html>

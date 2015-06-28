@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		
+	</style>
+	<script>
+		/**
+			getCurrentPosition
+		*/
+		window.onload = function(){
+			var oBtn = document.getElementById("btn");
+			var oTxt = document.getElementById("txt");
+			var geoLoc = navigator.geolocation;
+			oBtn.onclick = function(){
+				geoLoc.getCurrentPosition(showLocation,errorHanlder);
+			}	
+			function showLocation(position){
+				var coords = position.coords;
+				oTxt.value = '经度：'+coords.longitude +'\n';
+				oTxt.value += '纬度：'+coords.latitude +'\n';
+				oTxt.value += '准确度：'+coords.accuracy + '\n';
+				oTxt.value += '海拨：' +coords.altitude + '\n';
+				oT.value += '海拔准确度 :' + position.coords.altitudeAcuracy+'\n';
+				oT.value += '行进方向 :' + position.coords.heading+'\n';
+				oT.value += '地面速度 :' + position.coords.speed+'\n';
+				oT.value += '时间戳:' + new Date(position.timestamp)+'\n';
+
+			}
+			function errorHanlder(err){
+				if(err.code == 0){
+					alert("Error: Unknown error");
+				}else if(err.code == 1){
+					alert("Error: Permission denied");
+				}else if(err.code == 2){
+					alert("Error: Position not available");
+				}else if(err.code == 3){
+					alert("Error: Timeout");
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="btn" type="button" value="send"/><br/>
+	<textarea id="txt" style="width:400px;height:400px;border:1px #000 solid;"></textarea>
+</body>
+</html>

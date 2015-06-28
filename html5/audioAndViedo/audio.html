@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		/**
+			autoplay="autoplay"
+			loop = "loop"
+			currentTime  当前运行的时间，可设置
+			volume:0----1 RW
+			muted : 是否静音;
+			paused  :   媒体是否暂停(只读)
+			ended   :   媒体是否播放完毕(只读)
+			error   :  媒体发生错误的时候，返回错误代码 (只读)
+			currentSrc  :   以字符串的形式返回媒体地址(只读)
+			
+			play()  :  媒体播放
+			pause()  :  媒体暂停
+			load()  :  重新加载媒体
+
+
+
+		*/
+	</style>
+	<script>
+		window.onload = function(){
+			var oA = document.getElementById("a1");
+			console.log(oA.duration);
+			console.log(oA.muted);
+			/**
+			setInterval(function(){
+				console.log(oA.currentTime);
+			},1000);
+			*/
+		}
+	</script>
+</head>
+<body>
+	
+	<audio id="a1"  controls="controls" src="johann_sebastian_bach_air.ogg"></audio>
+</body>
+</html>

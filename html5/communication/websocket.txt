@@ -1,0 +1,14 @@
+*****什么是web socket
+	基于TCP的双向的、全双工的数据连接
+		--双向：client  server
+		--全双工:数据的发送与接收，两者同步进行
+	建立socket应用?
+		-服务器必须支持web socket
+		--Nodejs的简介
+			Ryan Dahl基于GoogleV8引擎创建的一套用来编写高性能网络服务器的javascript工具包
+		--Nodejs:用js去写服务器应用
+
+
+	ps:使用websocket模块必须要安装socket.io
+	   安装的命令 npm install socket.io
+	   socket.io的官网
