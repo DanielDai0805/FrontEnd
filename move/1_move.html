@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		div{width:100px; height:100px; background:red; position:absolute;left:0; top:30px;}
+	</style>
+	<script>
+		window.onload = function(){
+			var oDiv = document.getElementById("div1");
+			var oBtn = document.getElementById("btn");
+			var oTimer = null;
+
+			oBtn.onclick = function(){
+				clearInterval(oTimer);
+				oTimer = setInterval(function(){
+					if(oDiv.offsetLeft===500){
+						clearInterval(oTimer);
+					}
+					oDiv.style.left = oDiv.offsetLeft + 10+"px";
+				});
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="btn" type="button" value="move"/>
+	<div id="div1"></div>
+	
+</body>
+</html>

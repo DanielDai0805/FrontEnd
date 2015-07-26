@@ -16,6 +16,8 @@ spring-test/test-output/
 argfile*
 pom.xml
 activemq-data/
+node_modules/
+
 
 /build
 buildSrc/build
@@ -37,3 +39,7 @@ out
 test-output
 atlassian-ide-plugin.xml
 .gradletasknamecache
+/html5/audioAndViedo/johann_sebastian_bach_air.mp3
+/html5/audioAndViedo/johann_sebastian_bach_air.ogg
+/html5/audioAndViedo/Intermission-Walk-in.ogv
+/html5/audioAndViedo/Intermission-Walk-in_512kb.mp4

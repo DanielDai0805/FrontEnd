@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#div1{width: 100px;height: 100px; background-color:red; position: absolute;right: 0;top:0;}
+	</style>
+	<script>
+		window.onload = function(){
+			var oDiv = document.getElementById("div1");
+			var iTimer = null;
+			var b = 0;
+			setTop();
+			window.onscroll = function(){
+				setTop();
+				if(b!==1){//说明不是定时器触发
+					clearInterval(iTimer);
+				}
+
+				b = 2;
+			}
+
+			oDiv.onclick = function(){
+				clearInterval(iTimer);
+				var iCur = iSpeed =0;
+				iTimer = setInterval(function(){
+					iCur = document.documentElement.scrollTop ||document.body.scrollTop;
+					iSpeed = Math.floor((0-iCur)/8);
+					if(iCur ===0){
+						clearInterval(iTimer);
+					}else{
+						document.documentElement.scrollTop = document.body.scrollTop = iCur + iSpeed ;
+					}
+					b = 1;
+				},30);
+			}
+			
+			function setTop(){
+				var scrollTop = document.documentElement.scrollTop ||document.body.scrollTop;
+				oDiv.style.top = scrollTop+ document.documentElement.clientHeight -oDiv.offsetHeight +"px";	
+			}
+		}	
+	</script>
+</head>
+<body style="height:2000px;">
+	<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#div1{width:100px; height:100px; background:red; position:absolute;left:200px; top:100px;}
+	</style>
+	<script>
+		window.onload = function(){
+			/**
+				缓冲运动
+					与摩擦力的区别：可以精确的停到指定的目标点
+					距离越大速度越大
+					速度由距离决定
+					速度=（目标值-当前值）/缩放系数
+					Bug :速度取整
+					值取整
+			*/
+			
+			var oDiv1 = document.getElementById("div1");
+			var oBtn = document.getElementById("btn");
+			var timer = null;
+			oBtn.onclick = function(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					iSpeed = (500 -oDiv1.offsetLeft)/8;
+					iSpeed = iSpeed > 0?Math.ceil(iSpeed):Math.floor(iSpeed);
+
+					if(oDiv1.offsetLeft == 500){
+						clearInterval(timer);
+					}else{
+						oDiv1.style.left = oDiv1.offsetLeft + iSpeed + 'px';
+
+					}
+				},30);	
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="move"/>
+	<div id="div1"></div>
+</body>
+</html>

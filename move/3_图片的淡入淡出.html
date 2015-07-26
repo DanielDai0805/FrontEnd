@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		img{position: absolute; top :20px; left:100px;opacity: 0.3;filter:alpha(opacity=30);}
+	</style>
+	<script>
+		window.onload = function(){
+			
+			var oImg = document.getElementById("img");
+			var iTimer = null;
+			oImg.onmouseover = function(){
+				startMove(this,100,10);
+			}
+			oImg.onmouseout = function(){
+				startMove(this,30,-10);
+			}
+
+			function startMove(obj,iTarget,iSpeed){
+				clearInterval(iTimer);
+				var iCur = 0;
+				iTimer = setInterval(function(){
+					iCur = Math.round(css(obj,'opacity')*100);
+					if(iCur===iTarget){
+						clearInterval(iTimer);
+					}else{
+						obj.style.opacity = (iCur+iSpeed)/100;
+						obj.style.filter = 'alpha(opacity'+(iCur+iSpeed)+')';
+					}	
+				},30);
+			}
+
+			function css(obj,attr){
+				if(obj.currentStyle){
+					return obj.currentStyle[attr];
+				}else{
+					return getComputedStyle(obj,false)[attr];
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<img id="img" src="imgs/1.jpg"/>
+</body>
+</html>

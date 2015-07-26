@@ -1,0 +1,10 @@
+---百度兴趣图谱：实现就是svg
+
+<g>标签:是一个容器标签，用来组合元素
+	共用属性	--transform="translate(0,0)"
+<text>标签：
+	x y text-anchor
+
+<image>标签
+	x y width height
+	xlink:href

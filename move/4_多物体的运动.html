@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		img{position: absolute; top :20px; left:300px;opacity: 0.3;filter:alpha(opacity=30);}
+		#div1{width:100px; height:200px; background:red; position:absolute;left:-100px; top:100px;}
+		#div2{width:30px;height:60px;background:black;color:white;position:absolute;right:-30px;top:70px; text-align: center;}
+	</style>
+	<script>
+		window.onload = function(){
+			
+			var oImg = document.getElementById("img");
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			var iTimer = null;
+			oImg.onmouseover = function(){
+				startMove(this,'opacity',100,10);
+			}
+			oImg.onmouseout = function(){
+				startMove(this,'opacity',30,-10);
+			}
+			oDiv1.onmouseover = function(){
+				startMove(this,'left',0,10);
+			}
+			oDiv1.onmouseout = function(){
+				startMove(this,'left',-100,-10);
+			}
+
+			function startMove(obj,attr,iTarget,iSpeed){
+				clearInterval(obj.timer);//每个函数使用自己的定时器，这样不会清除其它的定时器
+				var iCur = 0;
+				obj.timer = setInterval(function(){
+					if(attr==="opacity"){
+						iCur = Math.round(css(obj,attr)*100);
+					}else{
+						iCur = parseInt(css(obj,attr));
+					}	
+					if(iCur===iTarget){
+						clearInterval(iTimer);
+					}else{
+						if(attr==="opacity"){
+							obj.style.opacity = (iCur+iSpeed)/100;
+							obj.style.filter = 'alpha(opacity'+(iCur+iSpeed)+')';
+						}else{
+							obj.style[attr] = iCur +iSpeed +"px";
+						}				
+					}	
+				},30);
+			}
+
+			function css(obj,attr){
+				if(obj.currentStyle){
+					return obj.currentStyle[attr];
+				}else{
+					return getComputedStyle(obj,false)[attr];
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<img id="img" src="imgs/1.jpg"/>
+	<div id="div1">
+		<div id="div2">分享到</div>
+	</div>
+</body>
+</html>

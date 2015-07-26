@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		div{width: 500px;height: 280px; margin: 100px auto 0; border:1px solid #000;position:relative;overflow: hidden;}
+		ul{ margin:0px; padding:0px;position:absolute; top:0;left:0;}
+		li{list-style-type: none;float:left;}
+		img{display:block;}
+
+		p{position:absolute; bottom: 10px; text-align: center;width: 100%}
+		p span{ padding:2px 9px; background: #ccc;border-radius: 50%; margin-left:5px; cursor: pointer;}
+		p span.current{background: #F90;}
+	</style>
+	<script src="move.js"></script>
+	<script>
+		window.onload = function(){
+
+			var oDiv = document.getElementById("container");
+			var oUl = document.getElementById("ul1");
+			var aLi = oDiv.getElementsByTagName("li");
+			var oSpan = oDiv.getElementsByTagName("span");
+
+			var iLen = aLi.length;
+			var iWidth = aLi[0].offsetWidth;
+
+			oUl.style.width = iLen*iWidth +"px";
+			
+			for(var i=0;i<iLen;i++){
+				oSpan[i].index = i;
+				oSpan[i].onclick = function(){
+					for(var i=0;i<iLen;i++){
+						oSpan[i].className = "";
+					}
+					//oUl.style.left = -this.index *iWidth +"px";
+					this.className = "current";
+					startMove(oUl,{left:-this.index*iWidth});
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<ul id="ul1">
+			<li><img src="imgs/1.png"/></li>
+			<li><img src="imgs/2.jpg"/></li>
+			<li><img src="imgs/3.jpg"/></li>
+			<li><img src="imgs/4.jpg"/></li>
+			<li><img src="imgs/5.jpg"/></li>
+			<li><img src="imgs/6.jpg"/></li>
+		</ul>
+		<p>
+			<span class="current"></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</p>
+	</div>
+</body>
+</html>

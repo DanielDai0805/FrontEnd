@@ -29,6 +29,8 @@ XMLHttpRequest Level2(link:https://developer.mozilla.org/en-US/docs/Web/API/XMLH
 
 javascript的同源策略：link:		https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy
 
+nodejs的运行   node   xxx.js
+
 
 
 
